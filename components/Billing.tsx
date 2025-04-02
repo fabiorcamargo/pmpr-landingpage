@@ -25,7 +25,7 @@ const Billing: React.FC = () => (
       {/* Embed do vídeo */}
       <div className="relative w-full mt-6" style={{ paddingBottom: "56.25%" }}>
         <iframe
-          src="https://www.loom.com/embed/acd4319f3e1e4c898fe42101a5a05b0e?sid=763643bf-5f73-43e0-b1fc-c752c83b66cb"
+          src="https://www.loom.com/embed/a31b6b8b4d8d4fe0b7ecbd979150bc5b?sid=55fb7ad9-7289-4540-9101-212fad8eab65"
           frameBorder="0"
           allowFullScreen
           className="absolute top-0 left-0 w-full h-full"
