@@ -1,7 +1,7 @@
 import styles from "@/styles/style";
 import Button from "./Button";
 const CTA: React.FC = () => (
-    <section className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
+    <section className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`} id="price">
         <div className="flex-1 flex flex-col">
             <h2 className="font-poppins line-through font-semibold xs:text-[48px] text-[40px] text-gray-600 xs:leading-[76.8px] leading-[66.8px] w-full">
                 R$697,90

@@ -1,12 +1,12 @@
 import "@/styles/globals.css";
 export const metadata = {
-  title: "HooBank",
-  description: "Hoobank is an Modern Landing Page built with Next JS and Typescript",
+  title: "Concurso PMPR 2025",
+  description: "Faça parte do melhor preparatório para o Concurso da PMPR",
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode; }) => {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body>
         {children}
       </body>
