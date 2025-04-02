@@ -52,7 +52,7 @@ const Hero: React.FC = () => (
       <Image
         src={imgpmpr}
         alt="billings"
-        className="w-[100%] h-[100%] relative z-[5] rounded"
+        className="w-full h-auto max-w-full object-contain relative z-[5] rounded"
       />
       <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
       <div className="absolute z-[1] w-[80%] h-[80%] rounded-full bottom-40 white__gradient" />
