@@ -8,7 +8,7 @@ const Hero: React.FC = () => (
     <div
       className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}
     >
-      <div className="absolute z-[0] w-[20%] h-[80%] -right-[10%] rounded-full pmpr__gradient" />
+      <div className="absolute z-[0] w-[30%] h-[80%] -right-[10%] rounded-full pmpr__gradient" />
 
       <div className=" flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2">
         <Image src={discount} alt="discount" className="w-[32px] h-[32px]" />

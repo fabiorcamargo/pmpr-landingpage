@@ -31,23 +31,27 @@ const CTA: React.FC = () => {
 
   return (
     <section
-      className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-discount-gradient rounded-[20px] box-shadow relative`}
+      className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-discount-gradient rounded-[20px] box-shadow relative items-center flex flex-col items-center max-w-[700px]`}
       id="price"
     >
+      
       {/* Rótulo 70% OFF */}
       <div className="absolute top-0 right-0 bg-red-600 text-white font-bold text-sm px-4 py-2 rounded-bl-lg shadow-md">
         70% OFF
       </div>
 
       <div className="flex-1 flex flex-col">
+      <p className={`${styles.paragraph} max-w-[470px] mt-5 font-semibold`}>
+          PIX OU BOLETO
+        </p>
         <h2 className="font-poppins line-through xs:text-[35px] text-[30px] text-rose-500 xs:leading-[76.8px] leading-[66.8px] w-full">
           R$697,90
         </h2>
         <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] text-gradient xs:leading-[76.8px] leading-[66.8px] w-full">
           R$197,00
         </h2>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5 font-semibold`}>
-          Pagamento facilitado via PIX ou BOLETO.
+        <p className={`mt-5 font-semibold text-white`}>
+          Pagamento no Pix liberação imediata, boleto após compensação.
         </p>
       </div>
       <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
@@ -61,6 +65,7 @@ const CTA: React.FC = () => {
           Comprar Agora
         </a>
       </div>
+      
     </section>
   );
 };

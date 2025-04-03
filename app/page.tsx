@@ -23,8 +23,10 @@ const Home: React.FC = () => {
             <CardDeal />
             <Testimonials />
             {/* <Clients /> */}
-            <CTA />
-            <Cartao />
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 w-full">
+              <CTA />
+              <Cartao />
+            </div>
             <Footer />
           </div>
         </div>

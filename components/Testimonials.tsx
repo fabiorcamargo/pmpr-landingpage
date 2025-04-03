@@ -7,7 +7,6 @@ const Testimonials: React.FC = () => (
     id="clients"
     className={`${styles.paddingY} ${styles.flexCenter} flex-col relative`}
   >
-    <div className="absolute z-[0] w-[90%] h-[60%] -right-[50%] rounded-full pmpr__gradient" />
 
     <div className="w-full flex flex-col items-center text-center relative z-[1]">
       {/* Card com título, cupom e texto explicativo */}
