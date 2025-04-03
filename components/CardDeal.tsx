@@ -6,7 +6,7 @@ const CardDeal: React.FC = () => (
   <section className={layout.section}>
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
-      Acompanhe um exercío
+      Acompanhe um exercício
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
       Todas as aulas possuem exercícios com base nos últimos concursos.
