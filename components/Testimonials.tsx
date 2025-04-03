@@ -1,22 +1,37 @@
 import { feedback } from "@/constants";
 import styles from "@/styles/style";
 import FeedbackCard from "./FeedbackCard";
+
 const Testimonials: React.FC = () => (
   <section
     id="clients"
     className={`${styles.paddingY} ${styles.flexCenter} flex-col relative`}
   >
-    <div className="absolute z-[0] w-[60%] h-[60%] -right-[50%] rounded-full blue__gradient" />
-    <div className="w-full flex justify-between items-center md:flex-row flex-col sm:mb-10 mb-6 relative z-[1]">
-      <h1 className={styles.heading2}>
-        Aproveite o Cupom ALINE10
-      </h1>
-      <div className="w-full md:mt-0 mt-6">
-        <p className={`${styles.paragraph} text-left max-w-[450px]`}>
-          Escolha a melhor opção de pagamento e adquira ainda hoje antes que esgote esse lote.
+    <div className="absolute z-[0] w-[90%] h-[60%] -right-[50%] rounded-full pmpr__gradient" />
+
+    <div className="w-full flex flex-col items-center text-center relative z-[1]">
+      {/* Card com título, cupom e texto explicativo */}
+      <div className="bg-zinc-800/20 px-6 py-5 rounded-lg shadow-lg flex flex-col items-center max-w-[500px]">
+
+        <div className="flex items-center gap-4">
+          <h1 className={`${styles.heading2} text-white`}>LOTE 1 CUPOM</h1>
+          <span
+            id="cpnCode"
+            className="border-dashed border text-white px-4 py-2 rounded bg-indigo-600 xs:text-[48px] text-[40px] xs:leading-[76.8px] leading-[66.8px]"
+          >
+            ALINE10
+          </span>
+        </div>
+
+        {/* Texto Explicativo dentro do Card */}
+        <p className={`${styles.paragraph} text-center mt-4 text-white`}>
+          Você tem o pagamento facilitado e com 70% de desconto. Escolha a melhor opção 
+          de pagamento e adquira ainda hoje antes que esse lote esgote!
         </p>
       </div>
     </div>
+
+    {/* Seção de feedbacks comentada */}
     {/* <div className="flex flex-wrap sm:justify-start justify-center w-full feedback-container relative z-[1]">
       {feedback.map((card) => (
         <FeedbackCard key={card.id} {...card} />

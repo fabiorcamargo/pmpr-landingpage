@@ -18,7 +18,7 @@ const Billing: React.FC = () => (
       <h2 className={styles.heading2}>
         Acompanhe uma das aulas.
       </h2>
-      <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
+      <p className={`${styles.paragraph} max-w-[470px]`}>
         📢"Esse conteúdo sempre cai na prova da PM-PR! Você sabe responder?"
       </p>
 

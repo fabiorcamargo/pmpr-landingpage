@@ -6,7 +6,7 @@
   --black-gradient: linear-gradient(144.39deg,
       #ffffff -278.56%,
       #6d6d6d -78.47%,
-      #11101d 91.61%);
+rgb(29, 24, 16) 91.61%);
   --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
 }
 
@@ -14,6 +14,21 @@
   scroll-behavior: smooth;
 }
 
+.text-gradient {
+  background: radial-gradient(64.18% 64.18% at 71.16% 35.69%,
+rgb(133, 97, 31) 0.89%,  /* Marrom escuro */
+rgb(185, 118, 56) 17.23%, /* Marrom médio */
+      #A67B5B 42.04%, /* Tom de areia */
+      #C19A6B 55.12%, /* Bege */
+      #D2B48C 71.54%, /* Marrom claro */
+rgb(135, 80, 32) 100%);  /* Dourado claro */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* 
 .text-gradient {
   background: radial-gradient(64.18% 64.18% at 71.16% 35.69%,
       #def9fa 0.89%,
@@ -26,6 +41,16 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+} */
+
+.bg-pmpr-gradient{
+  background: linear-gradient(157.81deg,
+  #5C4033 0.89%,  /* Marrom escuro */
+  #8B5A2B 17.23%, /* Marrom médio */
+  #A67B5B 42.04%, /* Tom de areia */
+  #C19A6B 55.12%, /* Bege */
+rgb(172, 121, 54) 71.54%, /* Marrom claro */
+rgb(84, 74, 52) 100%);  /* Dourado claro */
 }
 
 .bg-blue-gradient {
@@ -63,7 +88,7 @@
 }
 
 .box-shadow {
-  box-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
+  box-shadow: 0px 20px 100px -10px rgba(30, 31, 33, 0.1);
 }
 
 .sidebar {
@@ -114,6 +139,11 @@
 
 .blue__gradient {
   background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);
+  filter: blur(123px);
+}
+
+.pmpr__gradient {
+  background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%,rgb(131, 81, 5) 100%);
   filter: blur(123px);
 }
 
