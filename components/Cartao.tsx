@@ -4,12 +4,14 @@ import Button from "./Button";
 declare global {
   interface Window {
     dataLayer: Record<string, any>[];
+    fbq?: (event: string, action: string, params?: Record<string, any>) => void;
   }
 }
 
 const CTA: React.FC = () => {
   const handleCheckoutClick = () => {
     if (typeof window !== "undefined") {
+      // Google Tag Manager
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "checkout",
@@ -26,6 +28,14 @@ const CTA: React.FC = () => {
           ],
         },
       });
+
+      // Facebook Pixel
+      if (window.fbq) {
+        window.fbq("track", "InitiateCheckout", {
+          value: 227.9,
+          currency: "BRL",
+        });
+      }
     }
   };
 
@@ -39,7 +49,7 @@ const CTA: React.FC = () => {
       </div>
 
       <div className="flex-1 flex flex-col">
-      <p className={`${styles.paragraph} max-w-[470px] mt-5 font-semibold`}>
+        <p className={`${styles.paragraph} max-w-[470px] mt-5 font-semibold`}>
           CARTÃO DE CRÉDITO
         </p>
         <h2 className="font-poppins line-through xs:text-[35px] text-[30px] text-rose-500 xs:leading-[76.8px] leading-[66.8px] w-full">
