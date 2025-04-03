@@ -6,8 +6,9 @@ export const metadata = {
   description: "Faça parte do melhor preparatório para o Concurso da PMPR",
 };
 
-const GA_TRACKING_ID = "G-3FJHE8L3C1"; // ID do Analytics
-const GTM_ID = "GTM-MQN2N2G4"; // Substitua pelo seu ID do Tag Manager
+const GA_TRACKING_ID = "G-3FJHE8L3C1"; // Google Analytics
+const GTM_ID = "GTM-MQN2N2G4"; // Google Tag Manager
+const FB_PIXEL_ID = "1205826360896620"; // Facebook Pixel
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -39,9 +40,25 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             });
           `}
         </Script>
+
+        {/* Meta Pixel (Facebook Pixel) */}
+        <Script id="facebook-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=true;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '${FB_PIXEL_ID}');
+            fbq('track', 'PageView');
+          `}
+        </Script>
       </head>
       <body>
-        {/* Fallback do GTM */}
+        {/* Google Tag Manager (noscript fallback) */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
@@ -50,6 +67,17 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
+
+        {/* Facebook Pixel (noscript fallback) */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+          />
+        </noscript>
+
         {children}
       </body>
     </html>
