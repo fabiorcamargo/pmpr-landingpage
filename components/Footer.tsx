@@ -8,11 +8,13 @@ const Footer: React.FC = () => (
   <section className={`${styles.flexCenter} ${styles.paddingY} flex-col text-center`}>
     <div className="flex flex-col items-center mb-8 w-full">
       <div className="flex flex-col items-center">
-        <Image
-          src={logo}
-          alt="Profissionaliza EAD"
-          className="w-[266px] h-[72px] object-contain"
-        />
+        <a href="/">
+          <Image
+            src={logo}
+            alt="Profissionaliza EAD"
+            className="w-[266px] h-[72px] object-contain"
+          />
+        </a>
         <p className={`${styles.paragraph} mt-4 max-w-[310px]`}>
           Preparando os policiais do futuro.
         </p>
@@ -25,10 +27,10 @@ const Footer: React.FC = () => (
       </p>
       <div className="flex flex-row mt-6">
         {socialMedia.map((social, index) => (
-          <Link 
-            key={social.id} 
-            href={social.link} 
-            target="_blank" 
+          <Link
+            key={social.id}
+            href={social.link}
+            target="_blank"
             rel="noopener noreferrer"
             className="mr-6 last:mr-0"
           >
@@ -40,9 +42,9 @@ const Footer: React.FC = () => (
           </Link>
         ))}
       </div>
-      
+
     </div>
-    
+
   </section>
 );
 

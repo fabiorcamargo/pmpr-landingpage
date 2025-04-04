@@ -8,7 +8,7 @@ const Hero: React.FC = () => (
     <div
       className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}
     >
-      
+
 
       <div className=" flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2">
         <Image src={discount} alt="discount" className="w-[32px] h-[32px]" />
@@ -33,7 +33,12 @@ const Hero: React.FC = () => (
         Se você sonha em se tornar um policial militar no Paraná, este curso foi feito para você! Com 80 aulas completas, nosso preparatório cobre todo o conteúdo do edital do concurso para Soldado, garantindo que você tenha o melhor desempenho na prova.
       </p>
 
-      <div className="flex items-center pb-8 pt-8">
+      <a
+        href="https://www.instagram.com/aline_bertoldo" // substitua pela URL real da rede dela
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center p-2 my-4 bg-discount-gradient rounded-xl hover:opacity-90 transition cursor-pointer"
+      >
         <div className="relative">
           <Image
             className="h-16 w-16 rounded-full object-cover"
@@ -44,11 +49,14 @@ const Hero: React.FC = () => (
           />
           <div className="absolute inset-0 rounded-full shadow-inner"></div>
         </div>
-        <div className="ml-4">
+        <div className="ml-4 flex-1">
           <h2 className="font-bold text-gray-200 text-lg">Aline Bertoldo</h2>
           <p className="text-gray-400">Influencer Digital</p>
         </div>
-      </div>
+        <svg className="w-7 h-7 text-gray-200 mx-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" />
+        </svg>
+      </a>
     </div>
     <div className={`${styles.flexCenter} flex-1 flex md:my-0 my-10 relative`}>
       <Image
@@ -56,7 +64,7 @@ const Hero: React.FC = () => (
         alt="billings"
         className="w-full h-auto max-w-full object-contain relative z-[5] rounded"
       />
-      
+
       <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
       <div className="absolute z-[1] w-[100%] h-[100%] rounded-full bottom-40 pmpr__gradient" />
       <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
