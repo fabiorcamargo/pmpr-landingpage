@@ -37,7 +37,7 @@ const Hero: React.FC = () => (
         href="https://www.instagram.com/aline_bertoldo" // substitua pela URL real da rede dela
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center p-2 my-4 bg-discount-gradient rounded-xl hover:opacity-90 transition cursor-pointer"
+        className="z-10 flex items-center p-2 my-4 bg-discount-gradient border border-gray-700 rounded-xl hover:opacity-90 transition cursor-pointer"
       >
         <div className="relative">
           <Image
@@ -66,7 +66,7 @@ const Hero: React.FC = () => (
       />
 
       <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
-      <div className="absolute z-[1] w-[100%] h-[100%] rounded-full bottom-40 pmpr__gradient" />
+      <div className="absolute z-[0] w-[100%] h-[100%] rounded-full bottom-40 pmpr__gradient" />
       <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
     </div>
     <div className={`${styles.flexCenter} ss:hidden`}>
