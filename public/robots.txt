@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /gratuito
+
+Sitemap: https://pmpr.profissionalizaead.com.br/sitemap.xml

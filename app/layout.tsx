@@ -1,19 +1,43 @@
 import "@/styles/globals.css";
 import Script from "next/script";
+import Head from "next/head";
+
+const GA_TRACKING_ID = "G-3FJHE8L3C1"; // Google Analytics
+const GTM_ID = "GTM-MQN2N2G4"; // Google Tag Manager
+const FB_PIXEL_ID = "1205826360896620"; // Facebook Pixel
 
 export const metadata = {
   title: "Concurso PMPR 2025",
   description: "Faça parte do melhor preparatório para o Concurso da PMPR",
 };
 
-const GA_TRACKING_ID = "G-3FJHE8L3C1"; // Google Analytics
-const GTM_ID = "GTM-MQN2N2G4"; // Google Tag Manager
-const FB_PIXEL_ID = "1205826360896620"; // Facebook Pixel
-
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="pt-BR">
       <head>
+        <Head>
+          <title>Concurso PMPR 2025</title>
+          <meta name="description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
+          <meta name="robots" content="index, follow" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+          {/* Open Graph / Facebook */}
+          <meta property="og:title" content="Concurso PMPR 2025" />
+          <meta property="og:description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content="https://pmpr.profissionalizaead.com.br/assets/imgpmpr.webp" />
+          <meta property="og:url" content="https://pmpr.profissionalizaead.com.br" />
+
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Concurso PMPR 2025" />
+          <meta name="twitter:description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
+          <meta name="twitter:image" content="https://pmpr.profissionalizaead.com.br/assets/imgpmpr.webp" />
+
+          {/* Canonical */}
+          <link rel="canonical" href="https://pmpr.profissionalizaead.com.br" />
+        </Head>
+
         {/* Google Tag Manager */}
         <Script id="gtm-head" strategy="afterInteractive">
           {`
@@ -41,7 +65,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           `}
         </Script>
 
-        {/* Meta Pixel (Facebook Pixel) */}
+        {/* Facebook Pixel */}
         <Script id="facebook-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -56,9 +80,25 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             fbq('track', 'PageView');
           `}
         </Script>
+
+        {/* Dados estruturados JSON-LD */}
+        <Script id="schema-org" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Concurso PMPR 2025",
+            url: "https://pmpr.profissionalizaead.com.br",
+            logo: "https://pmpr.profissionalizaead.com.br/assets/Logo-White.svg",
+            sameAs: [
+              "https://facebook.com/profissionalizaead",
+              "https://instagram.com/profissionalizaead",
+            ],
+          })}
+        </Script>
       </head>
+
       <body>
-        {/* Google Tag Manager (noscript fallback) */}
+        {/* Google Tag Manager noscript fallback */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
@@ -68,7 +108,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           ></iframe>
         </noscript>
 
-        {/* Facebook Pixel (noscript fallback) */}
+        {/* Facebook Pixel noscript fallback */}
         <noscript>
           <img
             height="1"
