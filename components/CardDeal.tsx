@@ -3,9 +3,9 @@ import styles, { layout } from "@/styles/style";
 import Button from "./Button";
 import Image from "next/image";
 const CardDeal: React.FC = () => (
-  <section className={layout.section}>
+  <section className={`${layout.section}`}>
 
-<div className={layout.sectionInfo}>
+    <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
         Acompanhe um execício.
       </h2>

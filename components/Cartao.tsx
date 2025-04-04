@@ -73,6 +73,8 @@ const CTA: React.FC = () => {
           Comprar Agora
         </a>
       </div>
+
+     
     </section>
   );
 };

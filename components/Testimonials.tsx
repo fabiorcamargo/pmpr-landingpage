@@ -8,6 +8,8 @@ const Testimonials: React.FC = () => (
     className={`${styles.paddingY} ${styles.flexCenter} flex-col relative`}
   >
 
+      
+      
     <div className="w-full flex flex-col items-center text-center relative z-[1]">
       {/* Card com título, cupom e texto explicativo */}
       <div className="bg-zinc-800/20 px-6 py-5 rounded-lg shadow-lg flex flex-col items-center max-w-[500px]">
@@ -29,6 +31,7 @@ const Testimonials: React.FC = () => (
         </p>
       </div>
     </div>
+
 
     {/* Seção de feedbacks comentada */}
     {/* <div className="flex flex-wrap sm:justify-start justify-center w-full feedback-container relative z-[1]">
