@@ -11,24 +11,20 @@ declare global {
 const CTA: React.FC = () => {
   const handleCheckoutClick = () => {
     if (typeof window !== "undefined") {
-      // Google Tag Manager
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "checkout",
-        ecommerce: {
-          currency: "BRL",
-          value: 197.0, // Valor do produto
-          items: [
-            {
-              item_name: "Curso PMPR 2025",
-              item_id: "curso-pmpr",
-              price: 197.0,
-              quantity: 1,
-            },
-          ],
-        },
+      // Google Analytics 4 - direto com gtag()
+      window.gtag?.("event", "begin_checkout", {
+        currency: "BRL",
+        value: 197.0,
+        items: [
+          {
+            item_name: "Curso PMPR 2025",
+            item_id: "curso-pmpr",
+            price: 197.0,
+            quantity: 1,
+          },
+        ],
       });
-
+  
       // Facebook Pixel
       if (window.fbq) {
         window.fbq("track", "InitiateCheckout", {
