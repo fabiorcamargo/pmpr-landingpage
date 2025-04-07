@@ -22,7 +22,7 @@ const Home: React.FC = () => {
           <div className={`${styles.boxWidth}`}>
             <FormGratis/>
             <Footer />
-            <AnalyticsDebugger/>
+            {/* <AnalyticsDebugger/> */}
             {/* <SendClientIdToN8n/> */}
           </div>
         </div>

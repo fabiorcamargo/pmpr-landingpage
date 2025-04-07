@@ -2,34 +2,20 @@
 
 import { useEffect, useState } from "react";
 import styles from "@/styles/style";
+import CryptoJS from "crypto-js";
 
 const getClientId = (): string | null => {
-  const gaCookie = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("_ga="));
-
+  const gaCookie = document.cookie.split("; ").find((row) => row.startsWith("_ga="));
   if (!gaCookie) return null;
-
   const parts = gaCookie.split(".");
-  if (parts.length >= 4) {
-    return `${parts[2]}.${parts[3]}`;
-  }
-
-  return null;
+  return parts.length >= 4 ? `${parts[2]}.${parts[3]}` : null;
 };
 
-// ✅ Função de validação de e-mail
-const isEmailValido = (email: string): boolean => {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
-};
+const isEmailValido = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-// ✅ Função de formatação de telefone
 const formatTelefone = (value: string) => {
   const cleaned = value.replace(/\D/g, "");
-
   if (cleaned.length === 0) return "";
-
   if (cleaned.length <= 2) return `(${cleaned}`;
   if (cleaned.length <= 6) return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2)}`;
   if (cleaned.length <= 10)
@@ -37,27 +23,24 @@ const formatTelefone = (value: string) => {
   return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7, 11)}`;
 };
 
-const FormGratis: React.FC = () => {
-  const [form, setForm] = useState({
-    nome: "",
-    telefone: "",
-    email: "",
-  });
+// 🔒 Captura cookies fbp e fbc
+const getCookie = (name: string): string | null => {
+  const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+  return match ? match[2] : null;
+};
 
+const FormGratis: React.FC = () => {
+  const [form, setForm] = useState({ nome: "", telefone: "", email: "" });
   const [loading, setLoading] = useState(false);
   const [formularioEnviado, setFormularioEnviado] = useState(false);
 
-  // Verifica se já enviou
   useEffect(() => {
     const enviado = localStorage.getItem("formularioEnviado");
-    if (enviado === "true") {
-      setFormularioEnviado(true);
-    }
+    if (enviado === "true") setFormularioEnviado(true);
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
     if (name === "telefone") {
       const telefoneFormatado = formatTelefone(value);
       setForm((prevForm) => ({ ...prevForm, telefone: telefoneFormatado }));
@@ -71,6 +54,8 @@ const FormGratis: React.FC = () => {
     setLoading(true);
 
     const clientId = getClientId();
+    const fbp = getCookie("_fbp");
+    const fbc = getCookie("_fbc");
 
     if (!isEmailValido(form.email)) {
       alert("❌ E-mail inválido");
@@ -84,6 +69,10 @@ const FormGratis: React.FC = () => {
       return;
     }
 
+    // 🧠 Hash de email e telefone
+    const emailHash = CryptoJS.SHA256(form.email.trim().toLowerCase()).toString(CryptoJS.enc.Hex);
+    const telefoneHash = CryptoJS.SHA256(form.telefone.replace(/\D/g, "")).toString(CryptoJS.enc.Hex);
+
     try {
       const res = await fetch("https://autowebhook.profissionalizaead.com.br/webhook/91fdeab0-d7e4-46ea-93ad-1ae11377225e", {
         method: "POST",
@@ -95,6 +84,27 @@ const FormGratis: React.FC = () => {
         alert("✅ Enviado com sucesso!");
         localStorage.setItem("formularioEnviado", "true");
         setFormularioEnviado(true);
+
+        // 📈 GA4 evento
+        if (typeof window !== "undefined" && typeof window.gtag === "function") {
+          window.gtag("event", "formulario_enviado", {
+            event_category: "Cadastro",
+            event_label: "Cadastro Gratuito",
+            status: "sucesso",
+          });
+        }
+
+        // 📘 Facebook Pixel com hash correto
+        if (typeof window !== "undefined" && typeof window.fbq === "function") {
+          window.fbq("track", "Lead", {
+            content_name: "Cadastro Gratuito",
+            status: "sucesso",
+            em: emailHash,
+            ph: telefoneHash,
+            fbp: fbp || undefined,
+            fbc: fbc || undefined,
+          });
+        }
       } else {
         alert("❌ Ocorreu um erro ao enviar.");
       }
@@ -120,10 +130,7 @@ const FormGratis: React.FC = () => {
             ✅ Cadastro Gratuito já liberado
           </p>
         ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4 mt-6 w-full max-w-xl mx-auto"
-          >
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-6 w-full max-w-xl mx-auto">
             <input
               type="text"
               name="nome"
@@ -152,7 +159,6 @@ const FormGratis: React.FC = () => {
               className="p-3 rounded-lg border border-gray-300 w-full"
               required
             />
-
             <button
               type="submit"
               disabled={loading}

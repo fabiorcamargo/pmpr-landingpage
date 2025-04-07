@@ -30,7 +30,7 @@ const Home: React.FC = () => {
               <Cartao />
             </div>
             <Footer />
-            <AnalyticsDebugger/>
+            {/* <AnalyticsDebugger/> */}
             {/* <SendClientIdToN8n/> */}
           </div>
         </div>
