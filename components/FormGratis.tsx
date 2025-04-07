@@ -87,9 +87,8 @@ const FormGratis: React.FC = () => {
 
         // 📈 GA4 evento
         if (typeof window !== "undefined" && typeof window.gtag === "function") {
-          window.gtag("event", "formulario_enviado", {
-            event_category: "Cadastro",
-            event_label: "Cadastro Gratuito",
+          window.gtag("event", "generate_lead", {
+            cadastro_tipo: "Gratuito",
             status: "sucesso",
           });
         }
