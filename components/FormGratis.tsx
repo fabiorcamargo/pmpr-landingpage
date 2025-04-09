@@ -139,16 +139,19 @@ const FormGratis: React.FC = () => {
               className="p-3 rounded-lg border border-gray-300 w-full"
               required
             />
-            <input
-              type="tel"
-              name="telefone"
-              placeholder="Telefone"
-              value={form.telefone}
-              onChange={handleChange}
-              className="p-3 rounded-lg border border-gray-300 w-full"
-              maxLength={15}
-              required
-            />
+            <div className="relative w-full">
+              <span className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-500">+55</span>
+              <input
+                type="tel"
+                name="telefone"
+                placeholder="(DDD) 9XXXX-XXXX"
+                value={form.telefone}
+                onChange={handleChange}
+                className="pl-12 p-3 rounded-lg border border-gray-300 w-full"
+                maxLength={15}
+                required
+              />
+            </div>
             <input
               type="email"
               name="email"
