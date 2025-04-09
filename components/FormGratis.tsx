@@ -23,7 +23,6 @@ const formatTelefone = (value: string) => {
   return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7, 11)}`;
 };
 
-// 🔒 Captura cookies fbp e fbc
 const getCookie = (name: string): string | null => {
   const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
   return match ? match[2] : null;
@@ -33,6 +32,11 @@ const FormGratis: React.FC = () => {
   const [form, setForm] = useState({ nome: "", telefone: "", email: "" });
   const [loading, setLoading] = useState(false);
   const [formularioEnviado, setFormularioEnviado] = useState(false);
+  const [dadosRetorno, setDadosRetorno] = useState<{
+    login: string;
+    senha: string;
+    url: string;
+  } | null>(null);
 
   useEffect(() => {
     const enviado = localStorage.getItem("formularioEnviado");
@@ -69,23 +73,24 @@ const FormGratis: React.FC = () => {
       return;
     }
 
-    // 🧠 Hash de email e telefone
     const emailHash = CryptoJS.SHA256(form.email.trim().toLowerCase()).toString(CryptoJS.enc.Hex);
     const telefoneHash = CryptoJS.SHA256(form.telefone.replace(/\D/g, "")).toString(CryptoJS.enc.Hex);
 
     try {
-      const res = await fetch("https://autowebhook.profissionalizaead.com.br/webhook/91fdeab0-d7e4-46ea-93ad-1ae11377225e", {
+      const res = await fetch("https://auto.profissionalizaead.com.br/webhook-test/91fdeab0-d7e4-46ea-93ad-1ae11377225e", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, client_id: clientId }),
       });
 
       if (res.ok) {
+        const data = await res.json();
+        setDadosRetorno({ login: data.login, senha: data.senha, url: data.url });
+
         alert("✅ Enviado com sucesso!");
         localStorage.setItem("formularioEnviado", "true");
         setFormularioEnviado(true);
 
-        // 📈 GA4 evento
         if (typeof window !== "undefined" && typeof window.gtag === "function") {
           window.gtag("event", "generate_lead", {
             cadastro_tipo: "Gratuito",
@@ -93,7 +98,6 @@ const FormGratis: React.FC = () => {
           });
         }
 
-        // 📘 Facebook Pixel com hash correto
         if (typeof window !== "undefined" && typeof window.fbq === "function") {
           window.fbq("track", "Lead", {
             content_name: "Cadastro Gratuito",
@@ -125,9 +129,20 @@ const FormGratis: React.FC = () => {
         </p>
 
         {formularioEnviado ? (
-          <p className="text-green-600 font-semibold mt-6 text-lg">
-            ✅ Cadastro Gratuito já liberado
-          </p>
+          <>
+            <p className="text-green-600 font-semibold mt-6 text-lg">
+              ✅ Cadastro Gratuito já liberado, confira seu e-mail e Whatsapp.
+            </p>
+
+            {dadosRetorno && (
+              <div className="mt-6 bg-green-100 text-green-800 p-4 rounded-lg text-left">
+                <p><strong>🎉 Acesso liberado!</strong></p>
+                <p><strong>Login:</strong> {dadosRetorno.login}</p>
+                <p><strong>Senha:</strong> {dadosRetorno.senha}</p>
+                <p><strong>Link de Acesso:</strong> <a className="text-blue-600 underline" href={dadosRetorno.url} target="_blank" rel="noopener noreferrer">{dadosRetorno.url}</a></p>
+              </div>
+            )}
+          </>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-6 w-full max-w-xl mx-auto">
             <input
