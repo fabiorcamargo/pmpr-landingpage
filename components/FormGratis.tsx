@@ -87,7 +87,7 @@ const FormGratis: React.FC = () => {
     const telefoneHash = CryptoJS.SHA256(telefoneLimpo).toString(CryptoJS.enc.Hex);
 
     try {
-      const res = await fetch("https://auto.profissionalizaead.com.br/webhook-test/91fdeab0-d7e4-46ea-93ad-1ae11377225e", {
+      const res = await fetch("https://autowebhook.profissionalizaead.com.br/webhook/4d2fa9fe-ff0d-41ef-abf5-6570e066e87e", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, telefone: telefoneLimpo, client_id: clientId }),

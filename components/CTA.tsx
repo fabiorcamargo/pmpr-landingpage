@@ -24,7 +24,7 @@ const CTA: React.FC = () => {
           },
         ],
       });
-  
+
       // Facebook Pixel
       if (window.fbq) {
         window.fbq("track", "InitiateCheckout", {
@@ -40,7 +40,7 @@ const CTA: React.FC = () => {
       className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-discount-gradient rounded-[20px] box-shadow relative items-center flex flex-col items-center max-w-[700px]`}
       id="price"
     >
-      
+
       {/* Rótulo 70% OFF */}
       <div className="absolute top-0 right-0 bg-red-600 text-white font-bold text-sm px-4 py-2 rounded-bl-lg shadow-md">
         70% OFF
@@ -59,6 +59,23 @@ const CTA: React.FC = () => {
         <p className={`mt-5 font-semibold text-white`}>
           Pagamento no Pix liberação imediata, boleto após compensação.
         </p>
+        <ul className="text-left mt-4 space-y-2 text-white">
+          <li className="flex items-start gap-2">
+            ✅ <span>80 Aulas Completas</span>
+          </li>
+          <li className="flex items-start gap-2">
+            ✅ <span>Exercícios de todas as disciplinas</span>
+          </li>
+          <li className="flex items-start gap-2">
+            ✅ <span>Correções comentadas</span>
+          </li>
+          <li className="flex items-start gap-2">
+            ✅ <span>Simulados</span>
+          </li>
+          <li className="flex items-start gap-2">
+            ✅ <span>Provas do último concurso</span>
+          </li>
+        </ul>
       </div>
       <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
         <a
@@ -71,7 +88,7 @@ const CTA: React.FC = () => {
           Comprar Agora
         </a>
       </div>
-      
+
     </section>
   );
 };

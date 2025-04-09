@@ -26,7 +26,7 @@ const Testimonials: React.FC = () => (
 
         {/* Texto Explicativo dentro do Card */}
         <p className={`${styles.paragraph} text-center mt-4 text-white`}>
-          Você tem o pagamento facilitado e com 70% de desconto. Escolha a melhor opção 
+          Você tem o pagamento facilitado via PIX/BOLETO ou CARTÃO PARCELADO com 70% de desconto. Escolha a melhor opção 
           de pagamento e adquira ainda hoje antes que esse lote esgote!
         </p>
       </div>

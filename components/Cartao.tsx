@@ -56,6 +56,23 @@ const CTA: React.FC = () => {
         <p className={`mt-5 font-semibold text-white`}>
           Pagamento no Cartão em até 4x, liberação imediata.
         </p>
+        <ul className="text-left mt-4 space-y-2 text-white">
+          <li className="flex items-start gap-2">
+            ✅ <span>80 Aulas Completas</span>
+          </li>
+          <li className="flex items-start gap-2">
+            ✅ <span>Exercícios de todas as disciplinas</span>
+          </li>
+          <li className="flex items-start gap-2">
+            ✅ <span>Correções comentadas</span>
+          </li>
+          <li className="flex items-start gap-2">
+            ✅ <span>Simulados</span>
+          </li>
+          <li className="flex items-start gap-2">
+            ✅ <span>Provas do último concurso</span>
+          </li>
+        </ul>
       </div>
       <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
         <a
@@ -69,7 +86,7 @@ const CTA: React.FC = () => {
         </a>
       </div>
 
-     
+
     </section>
   );
 };
