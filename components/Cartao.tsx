@@ -51,7 +51,7 @@ const CTA: React.FC = () => {
           R$697,90
         </h2>
         <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] text-gradient xs:leading-[76.8px] leading-[66.8px] w-full">
-          R$227,90
+          4x R$56,97
         </h2>
         <p className={`mt-5 font-semibold text-white`}>
           Pagamento no Cartão em até 4x, liberação imediata.
