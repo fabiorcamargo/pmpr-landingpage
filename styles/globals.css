@@ -156,3 +156,16 @@ rgb(84, 74, 52) 100%);  /* Dourado claro */
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
 }
+
+/* Estilizando o PhoneInput para light e dark mode usando Tailwind */
+.phone-input .PhoneInputInput {
+  @apply bg-white text-gray-900 border border-gray-300 rounded px-3 py-2 w-full transition-colors duration-300;
+}
+
+.dark .phone-input .PhoneInputInput {
+  @apply bg-gray-800 text-white border-gray-700;
+}
+
+.phone-input .PhoneInputInput:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}

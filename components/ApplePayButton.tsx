@@ -2,51 +2,25 @@
 
 import { useEffect, useState } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutPage from './CheckoutPage';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!)
+if (!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY) {
+  throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
+}
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const ApplePayButton = () => {
   const [available, setAvailable] = useState(false)
 
-  useEffect(() => {
-    const initStripe = async () => {
-      const stripe = await stripePromise
-      if (!stripe) return
-
-      const paymentRequest = stripe.paymentRequest({
-        country: 'BR',
-        currency: 'brl',
-        total: {
-          label: 'Total',
-          amount: 1990, // R$19,90
-        },
-        requestPayerName: true,
-        requestPayerEmail: true,
-      })
-
-      const result = await paymentRequest.canMakePayment()
-      if (result) {
-        const elements = stripe.elements()
-        const prButton = elements.create('paymentRequestButton', {
-          paymentRequest,
-        })
-
-        prButton.mount('#payment-request-button')
-        setAvailable(true)
-      }
-    }
-
-    initStripe()
-  }, [])
-
   return (
     <div>
-      {available ? (
-        <div id="payment-request-button" className="my-4" />
-      ) : (
-        <p className="text-white">Apple Pay não está disponível no dispositivo.</p>
-      )}
+      <Elements stripe={stripePromise}>
+        <CheckoutPage amount={49.99} />
+      </Elements>
     </div>
+
   )
 }
 

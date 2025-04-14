@@ -3,17 +3,17 @@ import styles from "@/styles/style";
 import { Navbar, Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, CTA, Cartao, Footer } from "@/components"
 import AnalyticsDebugger from "@components/AnalyticsDebugger";
 import SendClientIdToN8n from "@components/SendClientIdToN8n";
-import CheckoutForm, { OrderItem } from '@/components/CheckoutForm';
+import CheckoutForm from '@/components/CheckoutForm';
+
+import { useEffect, useState } from 'react'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutPage from '@components/CheckoutPage';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
+
 const Home: React.FC = () => {
-  const items: OrderItem[] = [
-    {
-      id: 1,
-      name: 'Preparatório PMPR 2025',
-      price: 197,
-      quantity: 1,
-      image: '/assets/imgpmpr.webp',
-    },
-  ];
+ 
   const shippingCost = 0; // Se for curso online, geralmente é zero.
   const taxRate = 0.05; // Exemplo: 5% de taxa
   return (
@@ -26,6 +26,8 @@ const Home: React.FC = () => {
         <div className="max-w-3xl w-full pb-8 sm:px-4 sm:px-6 lg:px-8">
 
           <CheckoutForm />
+
+        
 
           {/* <AnalyticsDebugger/> */}
           {/* <SendClientIdToN8n/> */}
