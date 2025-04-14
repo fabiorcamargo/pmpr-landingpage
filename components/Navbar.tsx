@@ -7,9 +7,9 @@ import Image from 'next/image';
 const Navbar: React.FC = () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar">
+    <nav className="w-full flex justify-center py-6 navbar">
       <a href="/">
-        <Image src={logo} alt="Profissionaliza EAD" width={124} height={32} />
+        <Image src={logo} alt="Profissionaliza EAD" width={160} height={50} />
       </a>
       {/* <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
