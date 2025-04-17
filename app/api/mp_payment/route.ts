@@ -79,28 +79,20 @@ export const POST = async (request: Request) => {
         'Content-Type': 'application/json',
       },
     });
-  } catch (err: any) { // Aqui usamos `any` para tipar o erro
-    // Checando o erro específico
-    console.error('Erro ao criar preferência:', err);
-
-    if (err?.response?.status === 400) {
-      // Erro 400 geralmente está relacionado ao token inválido ou credenciais erradas
-      return new Response(
-        JSON.stringify({ error: 'Token de acesso inválido. Verifique suas credenciais.' }),
-        {
-          status: 400,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-    }
-
-    return new Response(JSON.stringify({ error: 'Erro ao criar preferência' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  } catch (err: any) {
+    console.error('Erro completo:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
+  
+    return new Response(
+      JSON.stringify({
+        error: 'Erro ao criar preferência',
+        detalhes: err?.message || 'Sem mensagem de erro',
+      }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
 };
