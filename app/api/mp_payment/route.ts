@@ -1,4 +1,5 @@
 import { MercadoPagoConfig, Preference } from 'mercadopago';
+import { randomUUID } from 'crypto';
 
 const client = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN as string,
@@ -15,8 +16,7 @@ export const POST = async (request: Request) => {
     const telefoneLimpo = telefone.replace(/\D/g, '');
     const area_code = telefoneLimpo.slice(0, 2);
     const number = telefoneLimpo.slice(2);
-    const external_reference = crypto.randomUUID?.() ?? Math.random().toString(36).substring(2);
-
+    const external_reference = randomUUID();
 
     const preference = {
       items: [
@@ -25,7 +25,7 @@ export const POST = async (request: Request) => {
           title: produto.title,
           description: produto.description,
           quantity: produto.quantity,
-          unit_price: Number(produto.price ),
+          unit_price: Number(produto.price),
           picture_url: 'https://pmpr.profissionalizaead.com.br/assets/imgpmpr.webp',
           currency_id: 'BRL',
         },
@@ -55,7 +55,7 @@ export const POST = async (request: Request) => {
 
     const response = await preferenceClient.create({ body: preference });
 
-    // 🔥 Enviando para o webhook do n8n
+    // Enviando para o webhook do n8n
     await fetch(N8N_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -69,7 +69,7 @@ export const POST = async (request: Request) => {
         preference_id: response.id,
         init_point: response.init_point, // URL de checkout
         sandbox_init_point: response.sandbox_init_point,
-        action: "init_checkout"
+        action: 'init_checkout',
       }),
     });
 
@@ -79,10 +79,28 @@ export const POST = async (request: Request) => {
         'Content-Type': 'application/json',
       },
     });
-  } catch (err) {
+  } catch (err: any) { // Aqui usamos `any` para tipar o erro
+    // Checando o erro específico
     console.error('Erro ao criar preferência:', err);
+
+    if (err?.response?.status === 400) {
+      // Erro 400 geralmente está relacionado ao token inválido ou credenciais erradas
+      return new Response(
+        JSON.stringify({ error: 'Token de acesso inválido. Verifique suas credenciais.' }),
+        {
+          status: 400,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+    }
+
     return new Response(JSON.stringify({ error: 'Erro ao criar preferência' }), {
       status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
   }
 };
