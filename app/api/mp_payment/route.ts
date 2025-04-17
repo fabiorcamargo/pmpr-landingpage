@@ -1,50 +1,93 @@
 import { MercadoPagoConfig, Preference } from 'mercadopago';
 import { randomUUID } from 'crypto';
-import AWS from 'aws-sdk';
 
-const ssm = new AWS.SSM({
-  region: 'sa-east-1', // Substitua pela sua região da AWS
+
+const client = new MercadoPagoConfig({
+  accessToken: process.env.NEXT_PUBLIC_MP_ACCESS_TOKEN as string,
 });
 
-async function getSecret(secretName: string): Promise<string | undefined> {
-  try {
-    const response = await ssm.getParameter({
-      Name: secretName,
-      WithDecryption: true,
-    }).promise();
-    return response.Parameter?.Value;
-  } catch (error) {
-    console.error('Erro ao buscar segredo do SSM:', error);
-    return undefined;
-  }
-}
+const preferenceClient = new Preference(client);
+
+// URL do seu webhook no n8n
+const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_WEBHOOK_POST_CLIENT as string;
 
 export const POST = async (request: Request) => {
   try {
-    const accessToken = await getSecret('/amplify/shared/darz2fi62yq86/MP_ACCESS_TOKEN');
+    const { nome, email, telefone, produto, client_id } = await request.json();
+    const telefoneLimpo = telefone.replace(/\D/g, '');
+    const area_code = telefoneLimpo.slice(0, 2);
+    const number = telefoneLimpo.slice(2);
+    const external_reference = randomUUID();
 
-    if (!accessToken) {
-      console.error('MP_ACCESS_TOKEN não encontrado nos segredos do SSM.');
-      return new Response(JSON.stringify({ error: 'Erro de configuração do servidor' }), { status: 500 });
-    }
+    const preference = {
+      items: [
+        {
+          id: produto.id,
+          title: produto.title,
+          description: produto.description,
+          quantity: produto.quantity,
+          unit_price: Number(produto.price),
+          picture_url: 'https://pmpr.profissionalizaead.com.br/assets/imgpmpr.webp',
+          currency_id: 'BRL',
+        },
+      ],
+      payer: {
+        name: nome,
+        email: email,
+        phone: {
+          area_code: area_code,
+          number: number,
+        },
+      },
+      payment_methods: {
+        excluded_payment_types: [],
+      },
+      back_urls: {
+        success: 'https://pmpr.profissionalizaead.com.br/pay_status',
+        failure: 'https://pmpr.profissionalizaead.com.br/pay_status',
+        pending: 'https://pmpr.profissionalizaead.com.br/pay_status',
+      },
+      auto_return: 'approved',
+      additional_info: '70% de Desconto',
+      marketplace: 'NONE',
+      marketplace_fee: 0,
+      external_reference,
+    };
 
-    const client = new MercadoPagoConfig({
-      accessToken: accessToken,
+    const response = await preferenceClient.create({ body: preference });
+
+    // Enviando para o webhook do n8n
+    await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome,
+        email,
+        telefoneLimpo,
+        produto,
+        external_reference,
+        client_id,
+        preference_id: response.id,
+        init_point: response.init_point, // URL de checkout
+        sandbox_init_point: response.sandbox_init_point,
+        action: 'init_checkout',
+      }),
     });
 
-    const preferenceClient = new Preference(client);
-
-    // ... restante do seu código
-    const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_WEBHOOK_POST_CLIENT as string;
-    // ... restante do seu código usando preferenceClient e N8N_WEBHOOK_URL
-
+    return new Response(JSON.stringify({ id: response.id }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   } catch (err: any) {
     console.error('Erro completo:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
+
     return new Response(
       JSON.stringify({
         error: 'Erro ao criar preferência',
         detalhes: err?.message || 'Sem mensagem de erro',
-        tokenRecebido: process.env.MP_ACCESS_TOKEN || 'Token não definido', // Isso agora será undefined se não estiver em env vars
+        tokenRecebido: process.env.MP_ACCESS_TOKEN || 'Token não definido',
       }),
       {
         status: 500,
