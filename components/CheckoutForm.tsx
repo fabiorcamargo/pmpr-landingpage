@@ -95,8 +95,8 @@ export default function CheckoutPage() {
     return (
         <div className="mx-auto">
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-4">
-                <div className="bg-white mx-auto sm:mt-16 max-w-2xl rounded-3xl ring-1 ring-slate-300 sm:mt-10 mt-0 lg:mx-0 lg:flex lg:max-w-none mb-20">
-                    <div className="p-8 sm:p-10 lg:flex-auto">
+                <div className="bg-white mx-auto sm:mt-16 max-w-2xl rounded-3xl ring-1 ring-slate-300 mt-0 lg:mx-0 lg:flex lg:max-w-none mb-20">
+                    {/* <div className="p-8 sm:p-10 lg:flex-auto">
                         <h3 className="text-2xl font-bold tracking-tight text-gray-900">Preparatório PMPR 2025</h3>
                         <p className="mt-2 text-base leading-7 text-gray-600">Preparatório completo com todo o conteúdo do edital do concurso para Soldado, tenha o melhor desempenho no concurso.</p>
                         <div className="mt-8 flex items-center gap-x-4">
@@ -135,21 +135,34 @@ export default function CheckoutPage() {
                                 Plataforma de estudos prática e moderna, com suporte Premium para você.
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
                     <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
-                        <div className="rounded-2xl bg-slate-100 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+
+                        <div className="rounded-2xl bg-slate-100 py-4 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-4 min-w-[300px]">
+
+                            
+                                <img className='mx-auto pb-4 rounded-2xl' src='assets/pmpr-1.webp' alt="Profissionaliza EAD" width={200} height={200} />
+                          
+
                             <div className="mx-auto max-w-xs px-1">
-                                <p className="text-base font-semibold text-gray-600">Preço promocional do 1º Lote<br></br>70% de desconto</p>
+
+                                {/* <h3 className="text-2xl font-bold tracking-tight text-gray-900">Preparatório PMPR 2025</h3>
+
+                                <p className="text-base font-semibold text-gray-600 pt-4">Preço promocional do 1º Lote<br></br>70% de desconto</p> */}
                                 <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                                    <span className="text-5xl font-bold tracking-tight text-gray-900">R$ {pmprPrice.replace('.', ",")}</span>
-                                    {/* <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">USD</span> */}
+                                    <span className="text-md font-semibold leading-6 tracking-wide text-red-500 line-through">R$697,90</span>
                                 </p>
+                                <p className="flex items-baseline justify-center gap-x-2">
+                                    <span className="text-5xl font-bold tracking-tight text-green-700">R$ {pmprPrice.replace('.', ",")}</span>
+                                </p>
+                                
 
                                 <div className="pt-8 pb-2">
                                     {!formOculto && (
                                         <form onSubmit={handleContinuar}>
+
                                             <h2 className="text-xl font-semibold">Dados de Acesso</h2>
-                                            <p className="mb-4">Insira os dados abaixo para liberar seu acesso.</p>
+                                            <p className="mb-4">Insira os dados abaixo para liberar seu desconto.</p>
 
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                 <input
@@ -190,7 +203,7 @@ export default function CheckoutPage() {
                                                 className="mt-4 block w-full rounded-md bg-sky-600 px-3 py-3 text-center text-md font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                                 disabled={isProcessing} // Desabilita o botão durante o processamento
                                             >
-                                                {isProcessing ? "Processando..." : "Liberar Acesso"}
+                                                {isProcessing ? "Processando..." : "Liberar Desconto"}
                                             </button>
                                         </form>
                                     )}

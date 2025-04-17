@@ -16,7 +16,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="pt-BR">
       <head>
           <title>Concurso PMPR 2025</title>
-          
+          <link rel="icon" href="/favicon.ico" />
           <meta name="theme-color" content="#1c1917" />
           <meta name="description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
           <meta name="robots" content="index, follow" />

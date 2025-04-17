@@ -23,7 +23,6 @@ const Home: React.FC = () => {
             <CardDeal />
             <AnimatedTestimonials autoplay testimonials={testimonialsData} />
             <Testimonials />
-            <CTA />
             <Footer />
           </div>
         </div>

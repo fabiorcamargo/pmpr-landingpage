@@ -19,7 +19,9 @@ export default function MpButton({ preferenceId }: MpButtonProps) {
   if (!preferenceId) return null;
 
   return (
-    <div className="text-center mt-4">
+    <div className="text-center">
+      <p className="text-lg">Desconto concedido <br></br>Adquira Agora</p>
+      <p className="mb-4"></p>
       <Wallet
         initialization={{
           preferenceId,

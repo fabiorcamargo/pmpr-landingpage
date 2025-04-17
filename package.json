@@ -10,7 +10,6 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@aws-amplify/backend": "^1.15.0",
     "@mercadopago/sdk-react": "^1.0.2",
     "@stripe/react-stripe-js": "^3.6.0",
     "@stripe/stripe-js": "^7.0.0",
@@ -20,7 +19,6 @@
     "@types/react-dom": "18.2.4",
     "anchor-pki": "^0.3.2",
     "autoprefixer": "10.4.14",
-    "aws-sdk": "^2.1692.0",
     "clsx": "^2.1.1",
     "crypto-js": "^4.2.0",
     "framer-motion": "^12.7.2",

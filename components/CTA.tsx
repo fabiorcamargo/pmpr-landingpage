@@ -50,11 +50,11 @@ const CTA: React.FC = () => {
         {/* <p className={`${styles.paragraph} max-w-[470px] mt-5 font-semibold`}>
           PAGAMENTO FLEXÍVEL
         </p> */}
-        <h2 className="font-poppins line-through xs:text-[35px] text-[30px] text-rose-500 xs:leading-[76.8px] leading-[66.8px] w-full">
-          R$697,90
+        <h2 className="font-poppins line-through xs:text-[35px] text-[30px] text-rose-500  w-full">
+          de R$697,90
         </h2>
         <h2 className="font-poppins font-semibold xs:text-[48px] text-[40px] text-green-600 xs:leading-[76.8px] leading-[66.8px] w-full">
-          R$197,00
+          por R$197,00
         </h2>
         <p className={`mt-5 font-semibold text-white`}>
           Liberação imediata.
@@ -111,7 +111,7 @@ const CTA: React.FC = () => {
               d="M6.5 4L6.303 4.5915C6.24777 4.75718 6.15472 4.90774 6.03123 5.03123C5.90774 5.15472 5.75718 5.24777 5.5915 5.303L5 5.5L5.5915 5.697C5.75718 5.75223 5.90774 5.84528 6.03123 5.96877C6.15472 6.09226 6.24777 6.24282 6.303 6.4085L6.5 7L6.697 6.4085C6.75223 6.24282 6.84528 6.09226 6.96877 5.96877C7.09226 5.84528 7.24282 5.75223 7.4085 5.697L8 5.5L7.4085 5.303C7.24282 5.24777 7.09226 5.15472 6.96877 5.03123C6.84528 4.90774 6.75223 4.75718 6.697 4.5915L6.5 4Z"
             ></path>
           </svg>
-          <p className="text_button font-bold text-md">Compre Agora</p>
+          <p className="text_button font-bold text-md">Obter o Desconto</p>
         </a>
       </div>
 

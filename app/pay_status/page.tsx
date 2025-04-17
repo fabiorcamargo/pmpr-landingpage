@@ -12,25 +12,44 @@ const Home: React.FC = () => {
   const [isClient, setIsClient] = useState(false); // <- controle para saber se já estamos no cliente
 
   useEffect(() => {
-    setIsClient(true); // <- sinaliza que estamos no cliente
+    setIsClient(true);
     const params = new URLSearchParams(window.location.search);
-    const status = params.get('status');
-    const externalReference = params.get('external_reference');
+    const status = params.get("status");
+    const externalReference = params.get("external_reference");
 
     setStatus(status);
     setExternalReference(externalReference);
 
-    if (externalReference) {
-      fetch(n8nroute + `?external_reference=${externalReference}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setCliente(data);
-        })
-        .catch((error) => {
-          console.error('Erro ao buscar dados do cliente:', error);
-        });
+    const fetchCliente = () => {
+      if (externalReference) {
+        fetch(`${n8nroute}?external_reference=${externalReference}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setCliente(data);
+
+            // Atualiza o status se o novo for diferente do atual
+            if (data.status && data.status !== status) {
+              setStatus(data.status);
+            }
+          })
+          .catch((error) => {
+            console.error("Erro ao buscar dados do cliente:", error);
+          });
+      }
+    };
+
+    fetchCliente(); // chamada inicial
+
+    let interval: NodeJS.Timeout;
+
+    // se o status inicial for "pending", começa a verificar periodicamente
+    if (status === "pending" && externalReference) {
+      interval = setInterval(fetchCliente, 5000); // verifica a cada 5 segundos
     }
+
+    return () => clearInterval(interval); // limpa o intervalo ao desmontar
   }, []);
+
 
   const renderStatusMessage = () => {
     if (!status) return null;
