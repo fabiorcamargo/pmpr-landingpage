@@ -81,11 +81,12 @@ export const POST = async (request: Request) => {
     });
   } catch (err: any) {
     console.error('Erro completo:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
-  
+
     return new Response(
       JSON.stringify({
         error: 'Erro ao criar preferência',
         detalhes: err?.message || 'Sem mensagem de erro',
+        tokenRecebido: process.env.MP_ACCESS_TOKEN || 'Token não definido',
       }),
       {
         status: 500,
