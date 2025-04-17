@@ -134,7 +134,7 @@ const FormGratis: React.FC = () => {
         <h2 className="font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100px] leading-[75px]">
           Libere o acesso gratuito.
         </h2>
-        <p className={`${styles.paragraph} max-w-[470px] w-full max-w-xl mx-auto pt-4`}>
+        <p className={`${styles.paragraph} max-w-[470px] w-full mx-auto pt-4`}>
           "Preencha os dados abaixo que iremos liberar um conteúdo gratuito para você conhecer a melhor plataforma de estudos do mercado"
         </p>
 
