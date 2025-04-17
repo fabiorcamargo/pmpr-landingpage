@@ -17,6 +17,8 @@ export const POST = async (request: Request) => {
     const area_code = telefoneLimpo.slice(0, 2);
     const number = telefoneLimpo.slice(2);
     const external_reference = randomUUID();
+    const [primeiroNome, ...restoDoNome] = nome.trim().split(' ');
+    const sobrenome = restoDoNome.join(' ') || 'Não Informado';
 
     const preference = {
       items: [
@@ -28,10 +30,12 @@ export const POST = async (request: Request) => {
           unit_price: Number(produto.price),
           picture_url: 'https://pmpr.profissionalizaead.com.br/assets/imgpmpr.webp',
           currency_id: 'BRL',
+          category_id: 'courses'
         },
       ],
       payer: {
-        name: nome,
+        name: primeiroNome,
+        last_name: sobrenome,
         email: email,
         phone: {
           area_code: area_code,
