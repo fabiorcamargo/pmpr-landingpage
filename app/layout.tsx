@@ -15,28 +15,28 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="pt-BR">
       <head>
-          <title>Concurso PMPR 2025</title>
-          <link rel="icon" href="/favicon.ico" />
-          <meta name="theme-color" content="#1c1917" />
-          <meta name="description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
-          <meta name="robots" content="index, follow" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Concurso PMPR 2025</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#1c1917" />
+        <meta name="description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-          {/* Open Graph / Facebook */}
-          <meta property="og:title" content="Concurso PMPR 2025" />
-          <meta property="og:description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content="https://pmpr.profissionalizaead.com.br/assets/imgpmpr.webp" />
-          <meta property="og:url" content="https://pmpr.profissionalizaead.com.br" />
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Concurso PMPR 2025" />
+        <meta property="og:description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://pmpr.profissionalizaead.com.br/assets/imgpmpr.webp" />
+        <meta property="og:url" content="https://pmpr.profissionalizaead.com.br" />
 
-          {/* Twitter */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Concurso PMPR 2025" />
-          <meta name="twitter:description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
-          <meta name="twitter:image" content="https://pmpr.profissionalizaead.com.br/assets/imgpmpr.webp" />
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Concurso PMPR 2025" />
+        <meta name="twitter:description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
+        <meta name="twitter:image" content="https://pmpr.profissionalizaead.com.br/assets/imgpmpr.webp" />
 
-          {/* Canonical */}
-          <link rel="canonical" href="https://pmpr.profissionalizaead.com.br" />
+        {/* Canonical */}
+        <link rel="canonical" href="https://pmpr.profissionalizaead.com.br" />
 
         {/* Google Tag Manager */}
         <Script id="gtm-head" strategy="afterInteractive">
@@ -77,7 +77,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '${FB_PIXEL_ID}');
-            
+            fbq('track', 'PageView'); // Adicione esta linha para rastrear o PageView
           `}
         </Script>
 
