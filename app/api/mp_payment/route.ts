@@ -3,13 +3,13 @@ import { randomUUID } from 'crypto';
 
 
 const client = new MercadoPagoConfig({
-  accessToken: process.env.NEXT_PUBLIC_MP_ACCESS_TOKEN as string,
+  accessToken: process.env.MP_ACCESS_TOKEN as string,
 });
 
 const preferenceClient = new Preference(client);
 
 // URL do seu webhook no n8n
-const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_WEBHOOK_POST_CLIENT as string;
+const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_POST_CLIENT as string;
 
 export const POST = async (request: Request) => {
   try {
