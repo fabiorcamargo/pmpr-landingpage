@@ -168,6 +168,7 @@ export default function CheckoutPage() {
                                                 <input
                                                     type="text"
                                                     placeholder="Nome completo"
+                                                    name='nome'
                                                     value={form.nome}
                                                     onChange={(e) => handleInputChange('nome', e.target.value)}
                                                     className="sm:col-span-2 border border-gray-300 p-2 rounded w-full bg-white text-gray-900"
@@ -176,6 +177,7 @@ export default function CheckoutPage() {
                                                 <input
                                                     type="email"
                                                     placeholder="E-mail"
+                                                    name="email"
                                                     value={form.email}
                                                     onChange={(e) => handleInputChange('email', e.target.value)}
                                                     className="sm:col-span-2 border border-gray-300 p-2 rounded w-full bg-white text-gray-900"
@@ -192,6 +194,7 @@ export default function CheckoutPage() {
                                                     international={false}
                                                     countryCallingCodeEditable={false}
                                                     placeholder="Telefone"
+                                                    name="telefone"
                                                     className="sm:col-span-2 border border-gray-300 p-2 rounded w-full bg-white text-gray-900"
                                                     required
                                                 />
