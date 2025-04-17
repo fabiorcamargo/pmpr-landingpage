@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const GA_TRACKING_ID = "G-3FJHE8L3C1";
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID as string;
 
 const AnalyticsDebugger = () => {
   useEffect(() => {

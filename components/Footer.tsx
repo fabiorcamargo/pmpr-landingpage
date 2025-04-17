@@ -5,23 +5,24 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Footer: React.FC = () => (
-  <section className={`${styles.flexCenter} ${styles.paddingY} flex-col text-center`}>
-    <div className="flex flex-col items-center mb-8 w-full">
-      <div className="flex flex-col items-center">
-        <a href="/">
-          <Image
-            src={logo}
-            alt="Profissionaliza EAD"
-            className="w-[266px] h-[72px] object-contain"
-          />
-        </a>
-        <p className={`${styles.paragraph} mt-4 max-w-[310px]`}>
-          Preparando os policiais do futuro.
-        </p>
-      </div>
-    </div>
+  <section className={`${styles.flexCenter} ${styles.paddingY} flex-col text-center pt-20 `}>
+
 
     <div className="w-full flex flex-col items-center pt-6 border-t-[1px] border-t-[#3F3E45]">
+      <div className="flex flex-col items-center mb-8 w-full ">
+        <div className="flex flex-col items-center">
+          <a href="/">
+            <Image
+              src={logo}
+              alt="Profissionaliza EAD"
+              className="w-[266px] h-[72px] object-contain"
+            />
+          </a>
+          <p className={`${styles.paragraph} mt-4 max-w-[310px]`}>
+            Preparando os policiais do futuro.
+          </p>
+        </div>
+      </div>
       <p className="font-poppins font-normal text-[18px] leading-[27px] text-white">
         Profissionaliza EAD. Todos os direitos reservados.
       </p>

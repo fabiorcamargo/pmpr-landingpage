@@ -4,15 +4,15 @@ import FeedbackCard from "./FeedbackCard";
 
 const Testimonials: React.FC = () => (
   <section
-    id="clients"
+    id="price"
     className={`${styles.paddingY} ${styles.flexCenter} flex-col relative`}
   >
 
       
       
-    <div className="w-full flex flex-col items-center text-center relative z-[1]">
+    <a href="/checkout" className="w-full flex flex-col items-center text-center relative z-[1]">
       {/* Card com título, cupom e texto explicativo */}
-      <div className="bg-zinc-800/20 px-6 py-5 rounded-lg shadow-lg flex flex-col items-center max-w-[500px]">
+      <div className="bg-stone-900/70 border-stone-600 border-2 px-6 py-5 rounded-lg shadow-lg flex flex-col items-center max-w-[500px]">
 
         <div className="flex items-center gap-4">
           <h1 className={`${styles.heading2} text-white`}>LOTE 1 CUPOM</h1>
@@ -30,7 +30,8 @@ const Testimonials: React.FC = () => (
           de pagamento e adquira ainda hoje antes que esse lote esgote!
         </p>
       </div>
-    </div>
+      
+    </a>
 
 
     {/* Seção de feedbacks comentada */}

@@ -2,12 +2,16 @@ import { card } from "@/public/assets";
 import styles, { layout } from "@/styles/style";
 import Button from "./Button";
 import Image from "next/image";
+import GetStarted2 from "./GetStarted2";
 const CardDeal: React.FC = () => (
   <section className={`${layout.section}`}>
-
+    
     <div className={layout.sectionInfo}>
+    <div className={`${styles.flexCenter} py-8 w-max-sm mx-auto sm:mx-0`}>
+      <GetStarted2 />
+    </div>
       <h2 className={styles.heading2}>
-        Acompanhe um execício.
+        Acompanhe um exercício.
       </h2>
       <p className={`${styles.paragraph} max-w-[470px]`}>
         📢"As questões são no modelo de banca e baseada nos concursos."

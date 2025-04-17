@@ -29,7 +29,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ orderItems, shippingCost, t
               {/* <p className="text-sm text-gray-300">Quantity: {item.quantity}</p> */}
             </div>
             <p className="text-sm font-medium text-white">
-              R${(item.price * item.quantity).toFixed(2)}
+              R$ {(item.price * item.quantity).toFixed(2)}
             </p>
           </div>
         ))}

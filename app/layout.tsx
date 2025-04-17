@@ -15,8 +15,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="pt-BR">
       <head>
-        <Head>
           <title>Concurso PMPR 2025</title>
+          
+          <meta name="theme-color" content="#1c1917" />
           <meta name="description" content="Faça parte do melhor preparatório para o Concurso da PMPR" />
           <meta name="robots" content="index, follow" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,7 +37,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
           {/* Canonical */}
           <link rel="canonical" href="https://pmpr.profissionalizaead.com.br" />
-        </Head>
 
         {/* Google Tag Manager */}
         <Script id="gtm-head" strategy="afterInteractive">
