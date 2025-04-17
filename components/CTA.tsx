@@ -42,7 +42,7 @@ const CTA: React.FC = () => {
     >
 
       {/* Rótulo 70% OFF */}
-      <div className="absolute top-0 right-0 bg-red-600 text-white font-bold text-sm px-4 py-2 rounded-xl shadow-md">
+      <div className="m-2 absolute top-0 right-0 bg-red-600 text-white font-bold text-sm px-4 py-2 rounded-xl shadow-md">
         70% OFF
       </div>
 
