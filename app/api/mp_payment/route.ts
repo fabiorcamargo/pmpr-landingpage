@@ -1,5 +1,4 @@
 import { MercadoPagoConfig, Preference } from 'mercadopago';
-import { randomUUID } from 'crypto';
 
 const client = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN as string,
@@ -16,7 +15,8 @@ export const POST = async (request: Request) => {
     const telefoneLimpo = telefone.replace(/\D/g, '');
     const area_code = telefoneLimpo.slice(0, 2);
     const number = telefoneLimpo.slice(2);
-    const external_reference = randomUUID();
+    const external_reference = crypto.randomUUID?.() ?? Math.random().toString(36).substring(2);
+
 
     const preference = {
       items: [
