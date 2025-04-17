@@ -95,7 +95,7 @@ export default function CheckoutPage() {
     return (
         <div className="mx-auto">
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-4">
-                <div className="bg-white mx-auto sm:mt-16 max-w-2xl rounded-3xl ring-1 ring-slate-300 mt-0 lg:mx-0 lg:flex lg:max-w-none mb-20">
+                <div className="bg-white mx-auto sm:mt-8 max-w-2xl rounded-3xl ring-1 ring-slate-300 mt-0 lg:mx-0 lg:flex lg:max-w-none mb-20 min-w-[300px] sm:min-w-[558px]">
                     {/* <div className="p-8 sm:p-10 lg:flex-auto">
                         <h3 className="text-2xl font-bold tracking-tight text-gray-900">Preparatório PMPR 2025</h3>
                         <p className="mt-2 text-base leading-7 text-gray-600">Preparatório completo com todo o conteúdo do edital do concurso para Soldado, tenha o melhor desempenho no concurso.</p>
@@ -138,13 +138,13 @@ export default function CheckoutPage() {
                     </div> */}
                     <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
 
-                        <div className="rounded-2xl bg-slate-100 py-4 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-4 min-w-[300px]">
+                        <div className="rounded-2xl bg-slate-100 py-4 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-4 min-w-[300px] sm:min-w-[540px]">
 
                             
                                 <img className='mx-auto pb-4 rounded-2xl' src='assets/pmpr-1.webp' alt="Profissionaliza EAD" width={200} height={200} />
                           
 
-                            <div className="mx-auto max-w-xs px-1">
+                            <div className="mx-auto w-full px-1 sm:px-8">
 
                                 {/* <h3 className="text-2xl font-bold tracking-tight text-gray-900">Preparatório PMPR 2025</h3>
 

@@ -36,7 +36,7 @@ const CTA: React.FC = () => {
 
   return (
     <section
-      className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-discount-gradient rounded-[20px] box-shadow relative flex flex-col items-center max-w-[700px]`}
+      className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row bg-discount-gradient rounded-[20px] box-shadow relative flex flex-col items-center max-w-[700px]`}
     >
       {/* Rótulo 70% OFF */}
       <div className="absolute top-0 right-0 bg-red-600 text-white font-bold text-sm px-4 py-2 rounded-bl-lg shadow-md">
@@ -79,7 +79,7 @@ const CTA: React.FC = () => {
           href="https://www.asaas.com/c/i92q8e60m0uf0zaq"
           target="_blank"
           rel="noopener"
-          className="py-4 px-6 bg-pmpr-gradient font-poppins font-medium text-[18px] text-black font-semibold outline-none rounded-[10px] hover:translate-x-2 transition-all ease-linear cursor-pointer"
+          className="py-4 px-6 bg-pmpr-gradient font-poppins text-[18px] text-black font-semibold outline-none rounded-[10px] hover:translate-x-2 transition-all ease-linear cursor-pointer"
           onClick={handleCheckoutClick}
         >
           Comprar Agora

@@ -57,7 +57,7 @@ const Home: React.FC = () => {
     switch (status) {
       case "approved":
         return (
-          <div className="bg-slate-100 border border-2 border-green-400 text-green-800 px-6 py-4 rounded-xl shadow-md w-full max-w-md">
+          <div className="bg-slate-100 border-2 border-green-400 text-green-800 px-6 py-4 rounded-xl shadow-md w-full max-w-md">
             <h2 className="text-2xl font-bold mb-2">Pagamento Aprovado ✅</h2>
             <p>Seu pedido foi processado com sucesso!</p>
             <p className="text-sm text-gray-700 mt-2">Referência: <strong>{externalReference}</strong></p>
