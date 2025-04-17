@@ -8,7 +8,7 @@ const client = new MercadoPagoConfig({
 const preferenceClient = new Preference(client);
 
 // URL do seu webhook no n8n
-const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_WEBHOOK_POST_CLIENT as string;
+const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_POST_CLIENT as string;
 
 export const POST = async (request: Request) => {
   try {
