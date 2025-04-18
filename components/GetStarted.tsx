@@ -2,7 +2,7 @@ import styles from '@/styles/style';
 import { arrowUp } from '@/public/assets';
 import Image from 'next/image';
 const GetStarted: React.FC = () => (
-  <a href='/#price' className="button z-10">
+  <a href='/checkout' className="button z-10">
     <div className="dots_border"></div>
     <svg
       xmlns="http://www.w3.org/2000/svg"
