@@ -46,7 +46,7 @@ export const POST = async (request: Request) => {
         excluded_payment_types: [],
       },
       back_urls: {
-        success: 'https://pmpr.profissionalizaead.com.br/pay_status',
+        success: 'https://pmpr.profissionalizaead.com.br/obrigado',
         failure: 'https://pmpr.profissionalizaead.com.br/pay_status',
         pending: 'https://pmpr.profissionalizaead.com.br/pay_status',
       },
