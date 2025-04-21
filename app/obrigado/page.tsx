@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Script from "next/script";
+
 
 const initpw = process.env.NEXT_PUBLIC_INIT_PW as string;
 const n8nroute = process.env.NEXT_PUBLIC_N8N_CLIENT_STATUS as string;
@@ -9,9 +11,10 @@ const Home: React.FC = () => {
   const [cliente, setCliente] = useState<any>(null);
   const [status, setStatus] = useState<string | null>(null);
   const [externalReference, setExternalReference] = useState<string | null>(null);
-  const [isClient, setIsClient] = useState(false); // <- controle para saber se já estamos no cliente
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    
     setIsClient(true);
     const params = new URLSearchParams(window.location.search);
     const status = params.get("status");
@@ -26,8 +29,6 @@ const Home: React.FC = () => {
           .then((res) => res.json())
           .then((data) => {
             setCliente(data);
-
-            // Atualiza o status se o novo for diferente do atual
             if (data.status && data.status !== status) {
               setStatus(data.status);
             }
@@ -38,18 +39,23 @@ const Home: React.FC = () => {
       }
     };
 
-    fetchCliente(); // chamada inicial
+    fetchCliente();
 
     let interval: NodeJS.Timeout;
 
-    // se o status inicial for "pending", começa a verificar periodicamente
     if (status === "pending" && externalReference) {
-      interval = setInterval(fetchCliente, 5000); // verifica a cada 5 segundos
+      interval = setInterval(fetchCliente, 5000);
     }
 
-    return () => clearInterval(interval); // limpa o intervalo ao desmontar
+    return () => clearInterval(interval);
   }, []);
 
+  // Disparar evento do Google Ads quando aprovado
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag('event', 'ads_conversion_P_gina_de_sucesso_1');
+    }
+  }, [status]);
 
   const renderStatusMessage = () => {
     if (!status) return null;
