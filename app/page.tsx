@@ -4,21 +4,21 @@ import { Navbar, Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients
 import AnalyticsDebugger from "@components/AnalyticsDebugger";
 import SendClientIdToN8n from "@components/SendClientIdToN8n";
 import { AnimatedTestimonials } from "@components/Testimonials2";
-import testimonialsData from '@public/assets/testimonial.json'; // Importando o arquivo JSON
-import React, { useEffect, useState } from "react";
+import testimonialsData from '@public/assets/testimonial.json';
+import React, { useEffect } from "react";
 
- useEffect(() => {
+const Home: React.FC = () => {
+
+  useEffect(() => {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
       window.gtag('event', 'ads_conversion_Visualiza_o_de_p_gina_C_1');
     }
-  });
+  }, []); // [] garante que só rode 1x, como um componentDidMount
 
-const Home: React.FC = () => {
   return (
     <>
       <div className="relative bg-stone-900 w-full overflow-hidden">
         {/* Gradientes decorativos */}
-        
         <div className="absolute bottom-40 right-0 w-[40%] h-[40%] pmpr__gradient z-0" />
         <div className="absolute top-0 right-20 w-[30%] h-[30%] blue__gradient z-0" />
 
@@ -38,4 +38,4 @@ const Home: React.FC = () => {
   )
 }
 
-export default Home
+export default Home;
