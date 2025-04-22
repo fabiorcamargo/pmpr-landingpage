@@ -5,6 +5,13 @@ import AnalyticsDebugger from "@components/AnalyticsDebugger";
 import SendClientIdToN8n from "@components/SendClientIdToN8n";
 import { AnimatedTestimonials } from "@components/Testimonials2";
 import testimonialsData from '@public/assets/testimonial.json'; // Importando o arquivo JSON
+import React, { useEffect, useState } from "react";
+
+ useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag('event', 'ads_conversion_Visualiza_o_de_p_gina_C_1');
+    }
+  });
 
 const Home: React.FC = () => {
   return (
