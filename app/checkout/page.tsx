@@ -1,7 +1,12 @@
-"use client";
+'use client';
+import { useEffect } from 'react';
 import CheckoutForm from '@/components/CheckoutForm';
 
 const Home: React.FC = () => {
+  useEffect(() => {
+    window.gtag?.('config', 'AW-17024321136');
+  }, []);
+
   return (
     <>
       {/* Head específico para esta página */}

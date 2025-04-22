@@ -49,8 +49,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           `}
         </Script>
 
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17024321136"></Script>
-        <Script>
+        {/* <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17024321136"></Script> */}
+        {/* <Script>
           {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -58,14 +58,14 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
           gtag('config', 'AW-17024321136');
           `}
-        </Script>
+        </Script> */}
 
 
         {/* Google Analytics */}
-        <Script
+        {/* <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        />
+        /> */}
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];

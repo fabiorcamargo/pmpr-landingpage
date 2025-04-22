@@ -11,18 +11,18 @@ const CTA: React.FC = () => {
   const handleCheckoutClick = () => {
     if (typeof window !== "undefined") {
       // Google Analytics 4 - direto com gtag()
-      window.gtag?.("event", "begin_checkout", {
-        currency: "BRL",
-        value: 227.9,
-        items: [
-          {
-            item_name: "Curso PMPR 2025",
-            item_id: "curso-pmpr",
-            price: 227.9,
-            quantity: 1,
-          },
-        ],
-      });
+      // window.gtag?.("event", "begin_checkout", {
+      //   currency: "BRL",
+      //   value: 227.9,
+      //   items: [
+      //     {
+      //       item_name: "Curso PMPR 2025",
+      //       item_id: "curso-pmpr",
+      //       price: 227.9,
+      //       quantity: 1,
+      //     },
+      //   ],
+      // });
 
       // Facebook Pixel
       if (window.fbq) {
